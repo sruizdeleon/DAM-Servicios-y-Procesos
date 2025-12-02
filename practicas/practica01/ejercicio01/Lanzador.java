@@ -9,7 +9,7 @@ public class Lanzador {
 
         ProcessBuilder pb = new ProcessBuilder();
 
-        File directory = new File("D:\\Documentos\\Estudios\\DAM\\03. Segundo curso\\0490-PSP-Programacion de servicios y procesos\\Repositorio\\DAM-Servicios-y-Procesos\\practicas\\practica01\\ejercicio01\\experimentos");
+        File directory = new File("practicas\\practica01\\ejercicio01\\experimentos\\");
 
         if(directory.exists() && directory.isDirectory()) {
             directory.delete();
@@ -21,7 +21,7 @@ public class Lanzador {
 
         // Comando completo
         pb.command().add("java");
-        pb.command().add("D:\\Documentos\\Estudios\\DAM\\03. Segundo curso\\0490-PSP-Programacion de servicios y procesos\\Repositorio\\DAM-Servicios-y-Procesos\\practicas\\practica01\\ejercicio01\\Principal.java");
+        pb.command().add("practicas\\practica01\\ejercicio01\\Principal.java");
         pb.command().add("4");
         pb.command().add("2");
         pb.command().add("3");

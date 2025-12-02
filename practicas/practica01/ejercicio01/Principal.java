@@ -47,7 +47,7 @@ public class Principal {
             // Llamada correcta a la clase con paquete y classpath
             ProcessBuilder pb = new ProcessBuilder(
                     "java",
-                    "D:\\Documentos\\Estudios\\DAM\\03. Segundo curso\\0490-PSP-Programacion de servicios y procesos\\Repositorio\\DAM-Servicios-y-Procesos\\practicas\\practica01\\ejercicio01\\GeneradorExperimentos.java",
+                    "practicas\\practica01\\ejercicio01\\GeneradorExperimentos.java",
                     String.valueOf(i),
                     String.valueOf(cantExperimentos)
             );
@@ -72,7 +72,7 @@ public class Principal {
         for (int i = 1; i <= numProcesos; i++) {
             System.out.println("\n--- Resultados del PROCESO " + i + " ---");
 
-            String archivo = "D:\\Documentos\\Estudios\\DAM\\03. Segundo curso\\0490-PSP-Programacion de servicios y procesos\\Repositorio\\DAM-Servicios-y-Procesos\\practicas\\practica01\\ejercicio01\\experimentos\\experimentos_proceso_" + i + ".txt";
+            String archivo = "practicas\\practica01\\ejercicio01\\experimentos\\experimentos_proceso_" + i + ".txt";
 
             try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
                 String linea;

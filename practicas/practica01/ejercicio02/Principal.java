@@ -7,7 +7,7 @@ public class Principal {
 
     public static void main(String[] args) {
         String[] numerosAleatorios = {"3", "4"};
-        String rutaGeneradorNumeros = "D:\\Documentos\\Estudios\\DAM\\03. Segundo curso\\0490-PSP-Programacion de servicios y procesos\\Repositorio\\DAM-Servicios-y-Procesos\\practicas\\practica01\\ejercicio02\\GeneradorNumeros.java";
+        String rutaGeneradorNumeros = "practicas\\practica01\\ejercicio02\\GeneradorNumeros.java";
 
         ArrayList<Process> procesos = new ArrayList<>();
         for (String numero : numerosAleatorios) {
@@ -37,13 +37,16 @@ public class Principal {
         for (int proceso = 0; proceso < numerosAleatorios.length; proceso++) {
             ProcessBuilder pb = new ProcessBuilder(
                 "java",
-                "",
-                ""
+                "practicas\\practica01\\ejercicio02\\CalculadoraSubproceso.java",
+                "practicas\\practica01\\ejercicio02\\numerosAleatorios\\"
             );
-            pb.start();
-            pb.redirectOutput()
+            try {
+                pb.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            pb.redirectOutput();
         }
-
 
     }
 }

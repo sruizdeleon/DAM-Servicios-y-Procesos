@@ -26,7 +26,7 @@ public class GeneradorExperimentos {
         }
 
         // Carpeta relativa
-        String ruta = "D:\\Documentos\\Estudios\\DAM\\03. Segundo curso\\0490-PSP-Programacion de servicios y procesos\\Repositorio\\DAM-Servicios-y-Procesos\\practicas\\practica01\\ejercicio01\\experimentos\\";
+        String ruta = "practicas\\practica01\\ejercicio01\\experimentos\\";
         String nombreArchivo = ruta + "experimentos_proceso_" + numProceso + ".txt";
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
