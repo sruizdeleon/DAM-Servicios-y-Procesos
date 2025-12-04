@@ -9,78 +9,87 @@ public class Principal {
 
     public static void main(String[] args) {
 
+        // Comprobamos que recibamos los dos
         if (args.length < 2) {
-            System.err.println("ERROR: Uso: <num_procesos> <exp1> <exp2> ...");
+            System.out.println("ERROR: no se ha pasado mínimo un parámetro de procesos y número de experimentos");
             return;
         }
 
+        // Variable para guardar el número de procesos
         int numProcesos;
-
+        
+        // Comprobamos que sea un número entero
         try {
             numProcesos = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            System.err.println("ERROR: El primer argumento debe ser un entero.");
+            System.out.println("ERROR: El primer argumento debe ser un entero.");
             return;
         }
 
+        // Comprobamos que el número de procesos corresponda con la longuitud del resto de parámetros
         if (args.length != numProcesos + 1) {
-            System.err.println("ERROR: Debe indicar " + numProcesos + " cantidades de experimentos.");
+            System.out.println("ERROR: Debe indicar " + numProcesos + " cantidades de experimentos.");
             return;
         }
 
+        // Creamos un array para guardar los procesos
         ArrayList<Process> procesos = new ArrayList<>();
 
         System.out.println("Generando experimentos desde " + numProcesos + " procesos...");
 
-        // Lanzar procesos GeneradorExperimentos
+        // Lanzamos los procesos GeneradorExperimentos
         for (int i = 1; i <= numProcesos; i++) {
 
+            // Variable para guardar el nýmero de experimentos
             int cantExperimentos;
 
+            // Guardamos el parámetro correspondiente
             try {
                 cantExperimentos = Integer.parseInt(args[i]);
             } catch (NumberFormatException e) {
-                System.err.println("ERROR: El argumento " + args[i] + " no es un número.");
+                System.out.println("ERROR: El argumento " + args[i] + " no es un número.");
                 return;
             }
 
-            // Llamada correcta a la clase con paquete y classpath
-            ProcessBuilder pb = new ProcessBuilder(
-                    "java",
-                    "practicas\\practica01\\ejercicio01\\GeneradorExperimentos.java",
-                    String.valueOf(i),
-                    String.valueOf(cantExperimentos)
-            );
+            // Creamos el proceso
+            ProcessBuilder pb = new ProcessBuilder();
+
+            // Añadimos los comandos y parámetros
+            pb.command().add("java");
+            pb.command().add("practicas\\practica01\\ejercicio01\\GeneradorExperimentos.java");
+            pb.command().add(String.valueOf(i));
+            pb.command().add(String.valueOf(cantExperimentos));
 
             try {
-                procesos.add(pb.start());
+                procesos.add(pb.start()); // Lanzamos el proceso
             } catch (IOException e) {
-                System.err.println("ERROR al lanzar proceso " + i);
+                System.out.println("ERROR al lanzar proceso " + i);
             }
         }
 
-        // Esperar a todos los procesos
+        // Esperamos a que todos los procesos acaben
         for (Process p : procesos) {
             try {
                 p.waitFor();
             } catch (InterruptedException e) {
-                System.err.println("ERROR esperando un proceso");
+                System.out.println("ERROR esperando un proceso");
             }
         }
 
-        // Leer resultados
+        // Leemos los resultados
         for (int i = 1; i <= numProcesos; i++) {
             System.out.println("\n--- Resultados del PROCESO " + i + " ---");
 
             String archivo = "practicas\\practica01\\ejercicio01\\experimentos\\experimentos_proceso_" + i + ".txt";
 
+            // Creamos el buffer de lectura
             try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
                 String linea;
                 while ((linea = br.readLine()) != null) {
-                    System.out.println(linea);
+                    System.out.println(linea); // Mostramos por pantalla el experimento
                 }
             } catch (IOException e) {
-                System.err.println("ERROR leyendo archivo del proceso " + i);
+                System.out.println("ERROR leyendo archivo del proceso " + i);
             }
         }
     }
