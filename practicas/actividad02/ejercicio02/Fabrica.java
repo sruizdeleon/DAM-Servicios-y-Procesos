@@ -1,4 +1,4 @@
-package practicas.activida02.ejercicio02;
+package practicas.actividad02.ejercicio02;
 
 /**
  * Ejercicio 2:

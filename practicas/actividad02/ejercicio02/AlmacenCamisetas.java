@@ -1,4 +1,4 @@
-package practicas.activida02.ejercicio02;
+package practicas.actividad02.ejercicio02;
 
 public class AlmacenCamisetas {
     private final int MAX_CAMISETAS = 10;

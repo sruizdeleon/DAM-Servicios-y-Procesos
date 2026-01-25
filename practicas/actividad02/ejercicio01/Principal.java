@@ -1,4 +1,4 @@
-package practicas.activida02.ejercicio01;
+package practicas.actividad02.ejercicio01;
 
 public class Principal {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package practicas.activida02.ejercicio01;
+package practicas.actividad02.ejercicio01;
 
 import java.util.LinkedList;
 import java.util.Queue;

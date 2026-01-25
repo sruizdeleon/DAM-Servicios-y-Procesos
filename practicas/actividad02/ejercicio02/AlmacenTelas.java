@@ -1,4 +1,4 @@
-package practicas.activida02.ejercicio02;
+package practicas.actividad02.ejercicio02;
 
 public class AlmacenTelas {
     private final int MAX_ROLLOS = 20;
